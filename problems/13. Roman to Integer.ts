@@ -17,7 +17,11 @@ enum RomanChars {
 
 const romanToInt = (s: string): number => {
 
-    let value = 0;
+    let result = 0;
+
+    if(!(1 <= s.length && s.length <= 15)){
+        throw new Error("Input string can not be empty or more than 15 characters.")              
+    }
 
     for(let i = 0; i < s.length; i++){
         const char = s[i]       
@@ -28,29 +32,24 @@ const romanToInt = (s: string): number => {
            const charValue = RomanChars[char as keyof typeof RomanChars]
            if(i > 0){
            const prevCharValue = RomanChars[s[i-1] as keyof typeof RomanChars]
-           value += ( charValue > prevCharValue ? (charValue - (prevCharValue * 2)) : charValue )          
+           result += ( charValue > prevCharValue ? (charValue - (prevCharValue * 2)) : charValue )          
         }
         else {
-            value += charValue            
+            result += charValue            
            }
         }
     }    
-    if(value > 3999){
-        throw new Error("Range is 1 to 3999");
+
+    if(result > 3999){
+        throw new Error("Range is 1 to 3999")
     }
-    return value
+
+    return result;
 };
 
 export default function main(){
-
-    const s = "MCMXCIV"    
-
-    if(1 <= s.length && s.length <= 15){
-        const result = romanToInt(s)
-        console.log(`Roman Input: '${s}'\nOutput: ${result}`)
-    }
-
-    else {
-        throw new Error("Input string can not be empty or more than 15 characters.")
-    }
+    const s = "MCMXCV" 
+    const result = romanToInt(s)
+    console.log(`Roman Input: '${s}'\nOutput: ${result}`)
+    
 }
