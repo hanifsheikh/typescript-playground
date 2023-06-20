@@ -1,2 +1,2 @@
-import main from "./problems/3. Longest Substring Without Repeating Characters";
+import main from "./problems/4. Median of Two Sorted Arrays";
 main();
