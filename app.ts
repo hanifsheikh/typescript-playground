@@ -1,2 +1,2 @@
-import main from "./problems/1. Two Sum";
-main();
+import main from "./problems/4. Median of Two Sorted Arrays";
+main()
